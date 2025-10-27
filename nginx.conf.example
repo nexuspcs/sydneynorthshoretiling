@@ -1,0 +1,187 @@
+# Nginx Configuration for Sydney North Shore Tiling Website
+# This file contains recommended nginx configurations for optimal performance and security
+
+# ============================================
+# SECURITY HEADERS
+# ============================================
+
+# HTTP Strict Transport Security (HSTS)
+# Forces browsers to use HTTPS for all connections
+add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload" always;
+
+# X-Frame-Options
+# Prevents clickjacking attacks by disabling iframe embedding
+add_header X-Frame-Options "DENY" always;
+
+# X-Content-Type-Options
+# Prevents MIME type sniffing
+add_header X-Content-Type-Options "nosniff" always;
+
+# Referrer Policy
+# Controls how much referrer information is shared
+add_header Referrer-Policy "strict-origin-when-cross-origin" always;
+
+# Permissions Policy (formerly Feature-Policy)
+# Restricts which browser features can be used
+add_header Permissions-Policy "geolocation=(), microphone=(), camera=()" always;
+
+# Cross-Origin Policies
+add_header Cross-Origin-Opener-Policy "same-origin" always;
+add_header Cross-Origin-Embedder-Policy "require-corp" always;
+add_header Cross-Origin-Resource-Policy "same-origin" always;
+
+# Content Security Policy (CSP)
+# Start with report-only mode, then enforce after testing
+# Report-only mode (for testing):
+add_header Content-Security-Policy-Report-Only "
+  default-src 'self';
+  script-src 'self' 'unsafe-inline' https://code.jquery.com https://www.google.com https://www.gstatic.com https://cdn.b12.io;
+  style-src 'self' 'unsafe-inline';
+  img-src 'self' data: https:;
+  font-src 'self' https://fonts.gstatic.com https://cdn.b12.io;
+  connect-src 'self';
+  frame-src 'self' https://www.google.com;
+  frame-ancestors 'none';
+  base-uri 'self';
+  form-action 'self';
+" always;
+
+# When ready to enforce (remove -Report-Only):
+# add_header Content-Security-Policy "..." always;
+
+# ============================================
+# CACHING & PERFORMANCE
+# ============================================
+
+# Static assets with versioned/hashed filenames - long cache (1 year)
+location ~* \.(css|js|woff|woff2|ttf|eot|otf|svg|jpg|jpeg|png|gif|webp|avif|ico|pdf)$ {
+  # Long cache for static assets
+  expires 365d;
+  add_header Cache-Control "public, max-age=31536000, immutable";
+  
+  # Enable gzip compression
+  gzip on;
+  gzip_vary on;
+  gzip_min_length 1024;
+  gzip_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript image/svg+xml;
+  
+  # Brotli compression (if module available)
+  # brotli on;
+  # brotli_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript image/svg+xml;
+  
+  # CORS headers for fonts (if served from different domain)
+  add_header Access-Control-Allow-Origin "https://sydneynorthshoretiling.com.au";
+  add_header Access-Control-Allow-Methods "GET, OPTIONS";
+  add_header Access-Control-Allow-Headers "Content-Type";
+  
+  # Reapply security headers (nginx doesn't inherit add_header from parent context)
+  add_header X-Content-Type-Options "nosniff" always;
+  add_header X-Frame-Options "DENY" always;
+}
+
+# WebP images - special handling for modern browsers
+location ~* \.webp$ {
+  expires 365d;
+  add_header Cache-Control "public, max-age=31536000, immutable";
+  add_header Vary "Accept";
+  add_header X-Content-Type-Options "nosniff" always;
+}
+
+# HTML files - short cache, must revalidate
+location ~* \.html$ {
+  expires 10m;
+  add_header Cache-Control "public, max-age=600, must-revalidate";
+  
+  # Reapply security headers for HTML
+  add_header X-Frame-Options "DENY" always;
+  add_header X-Content-Type-Options "nosniff" always;
+  add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload" always;
+  # Add other security headers here
+}
+
+# Root location
+location / {
+  # Try to serve file directly, fall back to index
+  try_files $uri $uri/ /index.html;
+  
+  # Short cache for dynamic content
+  add_header Cache-Control "no-cache, must-revalidate";
+}
+
+# ============================================
+# COMPRESSION
+# ============================================
+
+# Gzip compression settings
+gzip on;
+gzip_vary on;
+gzip_proxied any;
+gzip_comp_level 6;
+gzip_types 
+  text/plain 
+  text/css 
+  text/xml 
+  text/javascript 
+  application/json 
+  application/javascript 
+  application/xml 
+  application/xml+rss 
+  image/svg+xml;
+gzip_min_length 1024;
+gzip_disable "msie6";
+
+# Brotli compression (requires ngx_brotli module)
+# Brotli typically provides 15-20% better compression than gzip
+# brotli on;
+# brotli_comp_level 6;
+# brotli_types 
+#   text/plain 
+#   text/css 
+#   text/xml 
+#   text/javascript 
+#   application/json 
+#   application/javascript 
+#   application/xml+rss 
+#   application/xml 
+#   image/svg+xml;
+
+# ============================================
+# OPTIMIZATION NOTES
+# ============================================
+
+# 1. SSL/TLS Configuration (not shown here, configure separately)
+#    - Use TLS 1.2 and 1.3 only
+#    - Enable HTTP/2 or HTTP/3
+#    - Use strong cipher suites
+#    - Enable OCSP stapling
+
+# 2. CDN Integration
+#    - Consider using a CDN like Cloudflare, Fastly, or AWS CloudFront
+#    - Offload static assets to CDN
+#    - Let CDN handle caching and compression at the edge
+
+# 3. Testing
+#    - Test CSP in report-only mode first
+#    - Monitor browser console for CSP violations
+#    - Use tools like:
+#      * https://securityheaders.com/
+#      * https://observatory.mozilla.org/
+#      * Chrome DevTools Security tab
+
+# 4. Monitoring
+#    - Set up logging for CSP violations
+#    - Monitor cache hit rates
+#    - Track page load times
+
+# ============================================
+# DEPLOYMENT CHECKLIST
+# ============================================
+# [ ] Test configuration with nginx -t
+# [ ] Deploy CSP in report-only mode first
+# [ ] Monitor for 1-2 weeks
+# [ ] Review CSP violation reports
+# [ ] Adjust CSP policy if needed
+# [ ] Switch to enforcing mode
+# [ ] Test site functionality thoroughly
+# [ ] Run PageSpeed Insights to verify improvements
+# [ ] Check security headers at securityheaders.com
