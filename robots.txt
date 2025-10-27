@@ -3,7 +3,3 @@ Allow: /
 
 # Sitemap location
 Sitemap: https://sydneynorthshoretiling.com.au/sitemap.xml
-
-# Disallow form submission pages
-Disallow: /intake-form.html
-Disallow: /scheduling.html
