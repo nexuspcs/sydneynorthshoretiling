@@ -32,6 +32,13 @@ add_header Cross-Origin-Resource-Policy "same-origin" always;
 
 # Content Security Policy (CSP)
 # Start with report-only mode, then enforce after testing
+# 
+# SECURITY NOTE: This starter policy includes 'unsafe-inline' for scripts and styles
+# because the site currently uses inline scripts/styles. For better security:
+# 1. Extract inline scripts to external files
+# 2. Use nonces or hashes for any remaining inline code
+# 3. Remove 'unsafe-inline' from the policy
+#
 # Report-only mode (for testing):
 add_header Content-Security-Policy-Report-Only "
   default-src 'self';
@@ -48,6 +55,16 @@ add_header Content-Security-Policy-Report-Only "
 
 # When ready to enforce (remove -Report-Only):
 # add_header Content-Security-Policy "..." always;
+
+# TODO for stricter CSP (without 'unsafe-inline'):
+# 1. Move inline scripts to external .js files
+# 2. For unavoidable inline scripts, use nonces:
+#    - Generate random nonce per request
+#    - Add to script tags: <script nonce="RANDOM">
+#    - Add to CSP: script-src 'self' 'nonce-RANDOM'
+# 3. Or use hashes for static inline scripts:
+#    - Calculate SHA256 hash of script content
+#    - Add to CSP: script-src 'self' 'sha256-HASH'
 
 # ============================================
 # CACHING & PERFORMANCE
@@ -69,8 +86,18 @@ location ~* \.(css|js|woff|woff2|ttf|eot|otf|svg|jpg|jpeg|png|gif|webp|avif|ico|
   # brotli on;
   # brotli_types text/plain text/css application/json application/javascript text/xml application/xml application/xml+rss text/javascript image/svg+xml;
   
-  # CORS headers for fonts (if served from different domain)
-  add_header Access-Control-Allow-Origin "https://sydneynorthshoretiling.com.au";
+  # CORS headers for fonts (adjust based on your needs)
+  # Option 1: Allow specific domain (recommended for production)
+  # add_header Access-Control-Allow-Origin "https://sydneynorthshoretiling.com.au";
+  
+  # Option 2: Allow all origins (use during development or if fonts served from CDN)
+  # add_header Access-Control-Allow-Origin "*";
+  
+  # Option 3: Dynamic based on request origin (most flexible)
+  # if ($http_origin ~* (sydneynorthshoretiling\.com\.au|localhost)) {
+  #   add_header Access-Control-Allow-Origin "$http_origin";
+  # }
+  
   add_header Access-Control-Allow-Methods "GET, OPTIONS";
   add_header Access-Control-Allow-Headers "Content-Type";
   
