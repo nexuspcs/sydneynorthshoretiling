@@ -245,6 +245,6 @@ For questions about these optimizations or further SEO improvements, refer to Go
 https://developers.google.com/search/docs/beginner/seo-starter-guide
 
 ---
-**Last Updated:** October 27, 2025
+**Last Updated:** October 27, 2024
 **Optimized By:** GitHub Copilot
 **Domain:** sydneynorthshoretiling.com.au
