@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Tiling pattern design -->
+  <rect width="100" height="100" fill="#2c5f8d"/>
+  <g fill="#ffffff">
+    <!-- Grid pattern representing tiles -->
+    <rect x="5" y="5" width="40" height="40" fill="#4a90c9" stroke="#ffffff" stroke-width="2"/>
+    <rect x="55" y="5" width="40" height="40" fill="#3d7db5" stroke="#ffffff" stroke-width="2"/>
+    <rect x="5" y="55" width="40" height="40" fill="#3d7db5" stroke="#ffffff" stroke-width="2"/>
+    <rect x="55" y="55" width="40" height="40" fill="#4a90c9" stroke="#ffffff" stroke-width="2"/>
+    <!-- Letter T for Tiling -->
+    <text x="50" y="70" font-family="Arial, sans-serif" font-size="55" font-weight="bold" fill="#ffffff" text-anchor="middle">T</text>
+  </g>
+</svg>
