@@ -19,8 +19,19 @@
 
   <link rel="canonical" href="https://sydneynorthshoretiling.com.au/">
 
+  <!-- Preconnect to required origins -->
+  <link rel="preconnect" href="https://code.jquery.com" crossorigin>
+  <link rel="preconnect" href="https://www.google.com" crossorigin>
+  <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
 
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+  <!-- Preload hero image for LCP -->
+  <link rel="preload" as="image" href="cdn.b12.io/client_media/HTVCFrcT/92953ab6-3097-11f0-b2ce-0242ac110002-jpg-hero_image.webp" type="image/webp" fetchpriority="high">
+
+  <!-- Preload critical fonts -->
+  <link rel="preload" as="font" type="font/woff2" href="assets/fonts/poppins-latin-normal-400.woff2" crossorigin>
+
+  <!-- Defer jQuery to avoid render blocking -->
+  <script defer src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
 
@@ -126,6 +137,7 @@
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 400;
+      font-display: swap;
       src: url(assets/fonts/poppins-devanagari-normal-400.woff2) format('woff2');
     }
 
@@ -134,6 +146,7 @@
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 400;
+      font-display: swap;
       src: url(assets/fonts/poppins-latin-ext-normal-400.woff2) format('woff2');
     }
 
@@ -142,6 +155,7 @@
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 400;
+      font-display: swap;
       src: url(assets/fonts/poppins-latin-normal-400.woff2) format('woff2');
     }
 
@@ -150,6 +164,7 @@
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 500;
+      font-display: swap;
       src: url(assets/fonts/poppins-devanagari-normal-500.woff2) format('woff2');
     }
 
@@ -158,6 +173,7 @@
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 500;
+      font-display: swap;
       src: url(assets/fonts/poppins-latin-ext-normal-500.woff2) format('woff2');
     }
 
@@ -166,6 +182,7 @@
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 500;
+      font-display: swap;
       src: url(assets/fonts/poppins-latin-normal-500.woff2) format('woff2');
     }
 
@@ -174,6 +191,7 @@
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 600;
+      font-display: swap;
       src: url(assets/fonts/poppins-devanagari-normal-600.woff2) format('woff2');
     }
 
@@ -182,6 +200,7 @@
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 600;
+      font-display: swap;
       src: url(assets/fonts/poppins-latin-ext-normal-600.woff2) format('woff2');
     }
 
@@ -190,6 +209,7 @@
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 600;
+      font-display: swap;
       src: url(assets/fonts/poppins-latin-normal-600.woff2) format('woff2');
     }
 
@@ -198,6 +218,7 @@
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 700;
+      font-display: swap;
       src: url(assets/fonts/poppins-devanagari-normal-700.woff2) format('woff2');
     }
 
@@ -206,6 +227,7 @@
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 700;
+      font-display: swap;
       src: url(assets/fonts/poppins-latin-ext-normal-700.woff2) format('woff2');
     }
 
@@ -214,6 +236,7 @@
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 700;
+      font-display: swap;
       src: url(assets/fonts/poppins-latin-normal-700.woff2) format('woff2');
     }
 
@@ -228,7 +251,8 @@
       src: url(assets/fonts/fontawesome-webfont-674f50d287a8c48dc19ba404d20fe713.eot);
       src: url(assets/fonts/fontawesome-webfont-674f50d287a8c48dc19ba404d20fe713.eot%3F) format("embedded-opentype"), url(https://sydney-north-shore-tiling-staging.b12sites.com/assets/fonts/fontawesome-webfont-fee66e712a8a08eef5805a46892932ad.woff2) format("woff2"), url(assets/fonts/fontawesome-webfont-fee66e712a8a08eef5805a46892932ad.woff) format("woff"), url(assets/fonts/fontawesome-webfont-b06871f281fee6b241d60582ae9369b9.ttf) format("truetype"), url(assets/fonts/fontawesome-webfont-912ec66d7572ff821749319396470bde.svg) format("svg");
       font-weight: 400;
-      font-style: normal
+      font-style: normal;
+      font-display: swap;
     }
 
     @-webkit-keyframes fa-spin {
@@ -13211,8 +13235,13 @@
                 <a class="sb-top-header__brand brand" href="index.html" skip-data-sb="">
 
                   <div class="brand__wrapper" skip-data-sb="">
-                    <img alt="logo.png" class="logo"
-                      src="cdn.b12.io/client_media/HTVCFrcT/b2252fe6-3090-11f0-8018-0242ac110002-png-regular_image.png">
+                    <picture>
+                      <source srcset="cdn.b12.io/client_media/HTVCFrcT/b2252fe6-3090-11f0-8018-0242ac110002-png-regular_image.webp" type="image/webp">
+                      <img alt="Sydney North Shore Tiling logo" class="logo"
+                        src="cdn.b12.io/client_media/HTVCFrcT/b2252fe6-3090-11f0-8018-0242ac110002-png-regular_image.png"
+                        width="653"
+                        height="316">
+                    </picture>
                     <span class="brand__text" data-component-field="brand" data-sb-field="text" data-sb-is-link=""
                       data-sb-type="text" data-sb-uuid="e33b7e08-b935-44b8-91b5-db583787a8e0">Sydney North Shore
                       Tiling</span>
@@ -13760,15 +13789,23 @@
             
               linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)),
             
-            url('cdn.b12.io/client_media/HTVCFrcT/92953ab6-3097-11f0-b2ce-0242ac110002-jpg-hero_image.jpeg')
+            url('cdn.b12.io/client_media/HTVCFrcT/92953ab6-3097-11f0-b2ce-0242ac110002-jpg-hero_image.webp')
           " style="
             
             background-image: 
               
                 linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.3)),
               
-              url('cdn.b12.io/client_media/HTVCFrcT/92953ab6-3097-11f0-b2ce-0242ac110002-jpg-hero_image.jpeg')
+              url('cdn.b12.io/client_media/HTVCFrcT/92953ab6-3097-11f0-b2ce-0242ac110002-jpg-hero_image.webp')
           "></div>
+
+      <!-- Discoverable hero image for LCP optimization -->
+      <img src="cdn.b12.io/client_media/HTVCFrcT/92953ab6-3097-11f0-b2ce-0242ac110002-jpg-hero_image.webp" 
+           alt="Sydney North Shore Tiling hero image" 
+           width="2500" 
+           height="1668" 
+           fetchpriority="high"
+           style="position: absolute; width: 0; height: 0; opacity: 0; pointer-events: none;">
 
 
       <div class="container
@@ -13968,11 +14005,16 @@
 
 
                   <figure
-                    data-bg="url('cdn.b12.io/client_media/HTVCFrcT/5300b316-3098-11f0-b2ce-0242ac110002-jpg-hero_image.jpeg')"
+                    data-bg="url('cdn.b12.io/client_media/HTVCFrcT/5300b316-3098-11f0-b2ce-0242ac110002-jpg-hero_image.webp')"
                     class="option-image lazy" data-custom-media-style="23d71d49-9857-4ec6-940e-cb448dee4f8a"
                     skip-data-sb="" style="">
-                    <img alt="20241205_162548 2.jpg" loading="lazy"
-                      src="cdn.b12.io/client_media/HTVCFrcT/5300b316-3098-11f0-b2ce-0242ac110002-jpg-hero_image.jpeg">
+                    <picture>
+                      <source srcset="cdn.b12.io/client_media/HTVCFrcT/5300b316-3098-11f0-b2ce-0242ac110002-jpg-hero_image.webp" type="image/webp">
+                      <img alt="Professional tiling work - bathroom renovation" loading="lazy"
+                        src="cdn.b12.io/client_media/HTVCFrcT/5300b316-3098-11f0-b2ce-0242ac110002-jpg-hero_image.jpeg"
+                        width="2500"
+                        height="3333">
+                    </picture>
                   </figure>
                   <div class="sb-text-image__image-caption" data-component-field="image" data-sb-field="caption"
                     data-sb-is-link="" data-sb-type="rich-text" data-sb-uuid="23d71d49-9857-4ec6-940e-cb448dee4f8a">
@@ -14106,12 +14148,17 @@
 
                       <div class="items-grid__item-image" skip-data-sb="">
                         <figure class="option-image lazy"
-                          data-bg="url('cdn.b12.io/client_media/HTVCFrcT/4cf3be04-3094-11f0-8dd0-0242ac110002-jpg-hero_image.jpeg')"
+                          data-bg="url('cdn.b12.io/client_media/HTVCFrcT/4cf3be04-3094-11f0-8dd0-0242ac110002-jpg-hero_image.webp')"
                           data-custom-media-style="31427476-5e58-42f9-bf51-0c9b1a68aabd" skip-data-sb="">
-                          <img
-                            alt="high-quality residential tiling, kitchen renovation, bathroom tiles, outdoor tiles, pool area tiling, modern and classic finishes"
-                            loading="lazy"
-                            src="cdn.b12.io/client_media/HTVCFrcT/4d08664c-3094-11f0-8dd0-0242ac110002-jpg-regular_image.jpeg">
+                          <picture>
+                            <source srcset="cdn.b12.io/client_media/HTVCFrcT/4d08664c-3094-11f0-8dd0-0242ac110002-jpg-regular_image.webp" type="image/webp">
+                            <img
+                              alt="high-quality residential tiling, kitchen renovation, bathroom tiles, outdoor tiles, pool area tiling, modern and classic finishes"
+                              loading="lazy"
+                              src="cdn.b12.io/client_media/HTVCFrcT/4d08664c-3094-11f0-8dd0-0242ac110002-jpg-regular_image.jpeg"
+                              width="1024"
+                              height="768">
+                          </picture>
                         </figure>
                       </div>
 
@@ -14150,11 +14197,16 @@
 
                       <div class="items-grid__item-image" skip-data-sb="">
                         <figure class="option-image lazy"
-                          data-bg="url('cdn.b12.io/client_media/HTVCFrcT/7b8a7a40-3095-11f0-b2ce-0242ac110002-jpg-hero_image.png')"
-                          data-custom-media-style="f04452cd-bd0f-4e48-b4b5-bf5b5bc8fabb" skip-data-sb="">
-                          <img alt="3a461f8a-3095-11f0-934f-0242ac110002-20241205_160533-1747207758315.jpg.png"
-                            loading="lazy"
-                            src="cdn.b12.io/client_media/HTVCFrcT/7dee6206-3095-11f0-b2ce-0242ac110002-jpg-regular_image.png">
+                          data-bg="url('cdn.b12.io/client_media/HTVCFrcT/7b8a7a40-3095-11f0-b2ce-0242ac110002-jpg-hero_image.webp')"
+                          data-custom-media-style="f04452cd-bd0f-4e48-b4b5-bf5b5bc8fabb" skip-data-sb="">                           <picture>
+                             <source srcset="cdn.b12.io/client_media/HTVCFrcT/7dee6206-3095-11f0-b2ce-0242ac110002-jpg-regular_image.webp" type="image/webp">
+                             <img
+                               alt="3a461f8a-3095-11f0-934f-0242ac110002-20241205_160533-1747207758315.jpg.png"
+                               loading="lazy"
+                               src="cdn.b12.io/client_media/HTVCFrcT/7dee6206-3095-11f0-b2ce-0242ac110002-jpg-regular_image.png"
+                               width="1280"
+                               height="839">
+                           </picture>
                         </figure>
                       </div>
 
@@ -14193,10 +14245,16 @@
 
                       <div class="items-grid__item-image" skip-data-sb="">
                         <figure class="option-image lazy"
-                          data-bg="url('cdn.b12.io/client_media/HTVCFrcT/18c7be94-3096-11f0-9283-0242ac110002-jpg-hero_image.jpeg')"
-                          data-custom-media-style="7b41444c-8e6a-40e2-8815-e2e001723f6c" skip-data-sb="">
-                          <img alt="20240522_132536.jpg" loading="lazy"
-                            src="cdn.b12.io/client_media/HTVCFrcT/18ef89d8-3096-11f0-9283-0242ac110002-jpg-regular_image.jpeg">
+                          data-bg="url('cdn.b12.io/client_media/HTVCFrcT/18c7be94-3096-11f0-9283-0242ac110002-jpg-hero_image.webp')"
+                          data-custom-media-style="7b41444c-8e6a-40e2-8815-e2e001723f6c" skip-data-sb="">                           <picture>
+                             <source srcset="cdn.b12.io/client_media/HTVCFrcT/18ef89d8-3096-11f0-9283-0242ac110002-jpg-regular_image.webp" type="image/webp">
+                             <img
+                               alt="20240522_132536.jpg"
+                               loading="lazy"
+                               src="cdn.b12.io/client_media/HTVCFrcT/18ef89d8-3096-11f0-9283-0242ac110002-jpg-regular_image.jpeg"
+                               width="1280"
+                               height="673">
+                           </picture>
                         </figure>
                       </div>
 
@@ -14333,9 +14391,15 @@
                               data-custom-media-style="8b357a7a-ca20-494c-b9c0-8f7ccf86153e" data-sb-field="media"
                               data-sb-is-link="" data-sb-type="reference"
                               data-sb-uuid="ffd19019-b536-4aa8-9ce0-d30da45e580b"
-                              style="background-image: url(cdn.b12.io/client_media/HTVCFrcT/0617acb6-3099-11f0-bdd2-0242ac110002-jpg-regular_image.jpeg);">
-                              <img alt="20241205_160616.jpg" loading="lazy"
-                                src="cdn.b12.io/client_media/HTVCFrcT/0617acb6-3099-11f0-bdd2-0242ac110002-jpg-regular_image.jpeg">
+                              style="background-image: url(cdn.b12.io/client_media/HTVCFrcT/0617acb6-3099-11f0-bdd2-0242ac110002-jpg-regular_image.jpeg);">                               <picture>
+                                 <source srcset="cdn.b12.io/client_media/HTVCFrcT/0617acb6-3099-11f0-bdd2-0242ac110002-jpg-regular_image.webp" type="image/webp">
+                                 <img
+                                   alt="20241205_160616.jpg"
+                                   loading="lazy"
+                                   src="cdn.b12.io/client_media/HTVCFrcT/0617acb6-3099-11f0-bdd2-0242ac110002-jpg-regular_image.jpeg"
+                                   width="1280"
+                                   height="960">
+                               </picture>
 
 
 
@@ -14365,9 +14429,15 @@
                               data-custom-media-style="c9adce5b-da5e-458c-8e4c-25886da6e14c" data-sb-field="media"
                               data-sb-is-link="" data-sb-type="reference"
                               data-sb-uuid="2a685824-a523-414c-806d-fa6ab3000c7e"
-                              style="background-image: url(cdn.b12.io/client_media/HTVCFrcT/0619076e-3099-11f0-a48c-0242ac110002-jpg-regular_image.jpeg);">
-                              <img alt="20250306_175523.jpg" loading="lazy"
-                                src="cdn.b12.io/client_media/HTVCFrcT/0619076e-3099-11f0-a48c-0242ac110002-jpg-regular_image.jpeg">
+                              style="background-image: url(cdn.b12.io/client_media/HTVCFrcT/0619076e-3099-11f0-a48c-0242ac110002-jpg-regular_image.jpeg);">                               <picture>
+                                 <source srcset="cdn.b12.io/client_media/HTVCFrcT/0619076e-3099-11f0-a48c-0242ac110002-jpg-regular_image.webp" type="image/webp">
+                                 <img
+                                   alt="20250306_175523.jpg"
+                                   loading="lazy"
+                                   src="cdn.b12.io/client_media/HTVCFrcT/0619076e-3099-11f0-a48c-0242ac110002-jpg-regular_image.jpeg"
+                                   width="1280"
+                                   height="1707">
+                               </picture>
 
 
 
@@ -14397,9 +14467,15 @@
                               data-custom-media-style="5d2e33fc-54cf-4645-a2ca-7da4c26f4de7" data-sb-field="media"
                               data-sb-is-link="" data-sb-type="reference"
                               data-sb-uuid="4cbfcbba-c281-4dea-8d82-55a4964b7124"
-                              style="background-image: url(cdn.b12.io/client_media/HTVCFrcT/29f7e1ae-309a-11f0-b73a-0242ac110002-jpg-regular_image.jpeg);">
-                              <img alt="20240529_163403.jpg" loading="lazy"
-                                src="cdn.b12.io/client_media/HTVCFrcT/29f7e1ae-309a-11f0-b73a-0242ac110002-jpg-regular_image.jpeg">
+                              style="background-image: url(cdn.b12.io/client_media/HTVCFrcT/29f7e1ae-309a-11f0-b73a-0242ac110002-jpg-regular_image.jpeg);">                               <picture>
+                                 <source srcset="cdn.b12.io/client_media/HTVCFrcT/29f7e1ae-309a-11f0-b73a-0242ac110002-jpg-regular_image.webp" type="image/webp">
+                                 <img
+                                   alt="20240529_163403.jpg"
+                                   loading="lazy"
+                                   src="cdn.b12.io/client_media/HTVCFrcT/29f7e1ae-309a-11f0-b73a-0242ac110002-jpg-regular_image.jpeg"
+                                   width="1280"
+                                   height="960">
+                               </picture>
 
 
 
@@ -14429,9 +14505,15 @@
                               data-custom-media-style="72de2382-1370-4827-bf13-0964bd7f346b" data-sb-field="media"
                               data-sb-is-link="" data-sb-type="reference"
                               data-sb-uuid="f0ed7015-1d5e-4901-8225-2e3576d20022"
-                              style="background-image: url(cdn.b12.io/client_media/HTVCFrcT/2947b342-309a-11f0-8940-0242ac110002-jpg-regular_image.jpeg);">
-                              <img alt="20240522_132511.jpg" loading="lazy"
-                                src="cdn.b12.io/client_media/HTVCFrcT/2947b342-309a-11f0-8940-0242ac110002-jpg-regular_image.jpeg">
+                              style="background-image: url(cdn.b12.io/client_media/HTVCFrcT/2947b342-309a-11f0-8940-0242ac110002-jpg-regular_image.jpeg);">                               <picture>
+                                 <source srcset="cdn.b12.io/client_media/HTVCFrcT/2947b342-309a-11f0-8940-0242ac110002-jpg-regular_image.webp" type="image/webp">
+                                 <img
+                                   alt="20240522_132511.jpg"
+                                   loading="lazy"
+                                   src="cdn.b12.io/client_media/HTVCFrcT/2947b342-309a-11f0-8940-0242ac110002-jpg-regular_image.jpeg"
+                                   width="1280"
+                                   height="2633">
+                               </picture>
 
 
 
@@ -14461,9 +14543,15 @@
                               data-custom-media-style="02351341-fa9c-438b-b587-6c01e9ec7194" data-sb-field="media"
                               data-sb-is-link="" data-sb-type="reference"
                               data-sb-uuid="9c6310c7-c5a9-4c1f-8b6f-9a79baf38fbd"
-                              style="background-image: url(cdn.b12.io/client_media/HTVCFrcT/28e7d170-309a-11f0-9508-0242ac110002-jpg-regular_image.jpeg);">
-                              <img alt="20240529_163423.jpg" loading="lazy"
-                                src="cdn.b12.io/client_media/HTVCFrcT/28e7d170-309a-11f0-9508-0242ac110002-jpg-regular_image.jpeg">
+                              style="background-image: url(cdn.b12.io/client_media/HTVCFrcT/28e7d170-309a-11f0-9508-0242ac110002-jpg-regular_image.jpeg);">                               <picture>
+                                 <source srcset="cdn.b12.io/client_media/HTVCFrcT/28e7d170-309a-11f0-9508-0242ac110002-jpg-regular_image.webp" type="image/webp">
+                                 <img
+                                   alt="20240529_163423.jpg"
+                                   loading="lazy"
+                                   src="cdn.b12.io/client_media/HTVCFrcT/28e7d170-309a-11f0-9508-0242ac110002-jpg-regular_image.jpeg"
+                                   width="1280"
+                                   height="1707">
+                               </picture>
 
 
 
@@ -14493,9 +14581,15 @@
                               data-custom-media-style="d8be8be8-1dd3-4329-a589-49e83f46bff9" data-sb-field="media"
                               data-sb-is-link="" data-sb-type="reference"
                               data-sb-uuid="0a9c7bb3-91bf-4d4f-b933-5de5871ac591"
-                              style="background-image: url(cdn.b12.io/client_media/HTVCFrcT/2853e636-309a-11f0-bdd2-0242ac110002-jpg-regular_image.jpeg);">
-                              <img alt="20250206_181919.jpg" loading="lazy"
-                                src="cdn.b12.io/client_media/HTVCFrcT/2853e636-309a-11f0-bdd2-0242ac110002-jpg-regular_image.jpeg">
+                              style="background-image: url(cdn.b12.io/client_media/HTVCFrcT/2853e636-309a-11f0-bdd2-0242ac110002-jpg-regular_image.jpeg);">                               <picture>
+                                 <source srcset="cdn.b12.io/client_media/HTVCFrcT/2853e636-309a-11f0-bdd2-0242ac110002-jpg-regular_image.webp" type="image/webp">
+                                 <img
+                                   alt="20250206_181919.jpg"
+                                   loading="lazy"
+                                   src="cdn.b12.io/client_media/HTVCFrcT/2853e636-309a-11f0-bdd2-0242ac110002-jpg-regular_image.jpeg"
+                                   width="1280"
+                                   height="1707">
+                               </picture>
 
 
 
@@ -14525,10 +14619,15 @@
                               data-custom-media-style="f04452cd-bd0f-4e48-b4b5-bf5b5bc8fabb" data-sb-field="media"
                               data-sb-is-link="" data-sb-type="reference"
                               data-sb-uuid="183656c2-ca8c-49a4-ac73-b047287e0599"
-                              style="background-image: url(cdn.b12.io/client_media/HTVCFrcT/7dee6206-3095-11f0-b2ce-0242ac110002-jpg-regular_image.png);">
-                              <img alt="3a461f8a-3095-11f0-934f-0242ac110002-20241205_160533-1747207758315.jpg.png"
-                                loading="lazy"
-                                src="cdn.b12.io/client_media/HTVCFrcT/7dee6206-3095-11f0-b2ce-0242ac110002-jpg-regular_image.png">
+                              style="background-image: url(cdn.b12.io/client_media/HTVCFrcT/7dee6206-3095-11f0-b2ce-0242ac110002-jpg-regular_image.png);">                               <picture>
+                                 <source srcset="cdn.b12.io/client_media/HTVCFrcT/7dee6206-3095-11f0-b2ce-0242ac110002-jpg-regular_image.webp" type="image/webp">
+                                 <img
+                                   alt="3a461f8a-3095-11f0-934f-0242ac110002-20241205_160533-1747207758315.jpg.png"
+                                   loading="lazy"
+                                   src="cdn.b12.io/client_media/HTVCFrcT/7dee6206-3095-11f0-b2ce-0242ac110002-jpg-regular_image.png"
+                                   width="1280"
+                                   height="839">
+                               </picture>
 
 
 
@@ -14558,9 +14657,15 @@
                               data-custom-media-style="7b41444c-8e6a-40e2-8815-e2e001723f6c" data-sb-field="media"
                               data-sb-is-link="" data-sb-type="reference"
                               data-sb-uuid="cce0531c-53d5-43b9-985b-9d16a994dd66"
-                              style="background-image: url(cdn.b12.io/client_media/HTVCFrcT/18ef89d8-3096-11f0-9283-0242ac110002-jpg-regular_image.jpeg);">
-                              <img alt="20240522_132536.jpg" loading="lazy"
-                                src="cdn.b12.io/client_media/HTVCFrcT/18ef89d8-3096-11f0-9283-0242ac110002-jpg-regular_image.jpeg">
+                              style="background-image: url(cdn.b12.io/client_media/HTVCFrcT/18ef89d8-3096-11f0-9283-0242ac110002-jpg-regular_image.jpeg);">                               <picture>
+                                 <source srcset="cdn.b12.io/client_media/HTVCFrcT/18ef89d8-3096-11f0-9283-0242ac110002-jpg-regular_image.webp" type="image/webp">
+                                 <img
+                                   alt="20240522_132536.jpg"
+                                   loading="lazy"
+                                   src="cdn.b12.io/client_media/HTVCFrcT/18ef89d8-3096-11f0-9283-0242ac110002-jpg-regular_image.jpeg"
+                                   width="1280"
+                                   height="673">
+                               </picture>
 
 
 
