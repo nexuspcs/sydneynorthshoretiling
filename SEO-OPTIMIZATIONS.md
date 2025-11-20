@@ -235,34 +235,9 @@ To complete SEO setup, perform these actions in Google Search Console:
 - [x] Theme color defined
 - [x] Geo-location tags added
 - [x] Keyword meta tags included
-- [x] Performance optimizations (WebP images, preload, defer scripts)
-- [x] Accessibility improvements (href attributes, alt text)
 - [ ] Sitemap submitted to Google Search Console
 - [ ] Rich results validated
 - [ ] Mobile-friendliness verified
-
-## Performance & PageSpeed Optimizations (October 2025)
-
-### Image Optimization
-- Converted all images to WebP format (71% size reduction: 8MB → 2MB)
-- Added width/height attributes to all images (prevents layout shift)
-- Implemented responsive images with `<picture>` elements
-- LCP image preloaded with `fetchpriority="high"`
-- Optimized logo from 653×316 to appropriate sizes
-
-### Resource Loading
-- Added preconnect hints for third-party origins (jQuery, Google, gstatic)
-- Preloaded critical resources (hero image, fonts)
-- Deferred JavaScript (jQuery and main bundle) to eliminate render-blocking
-- All fonts use `font-display: swap` to prevent FOIT
-
-### Expected Impact
-- PageSpeed score: 90+ (mobile and desktop)
-- LCP: < 1.5s (target < 2.5s)
-- CLS: < 0.05 (target < 0.1)
-- FID: < 50ms (target < 100ms)
-
-**See [PERFORMANCE.md](./PERFORMANCE.md) for complete details**
 
 ## Contact for SEO Support
 
@@ -270,6 +245,6 @@ For questions about these optimizations or further SEO improvements, refer to Go
 https://developers.google.com/search/docs/beginner/seo-starter-guide
 
 ---
-**Last Updated:** October 27, 2025  
-**Optimized By:** GitHub Copilot  
+**Last Updated:** October 27, 2024
+**Optimized By:** GitHub Copilot
 **Domain:** sydneynorthshoretiling.com.au
